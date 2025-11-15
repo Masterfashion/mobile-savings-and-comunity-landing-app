@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Savings & Community</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Registration Page -->
+        <div id="registration-page" class="page active">
+            <div class="container">
+                <h1>Register</h1>
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="reg-id">ID Number</label>
+                        <input type="text" id="reg-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-phone">Phone Number</label>
+                        <input type="tel" id="reg-phone" required placeholder="+243 XXX XXX XXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <p class="link-text">Already have an account? <a href="#" id="show-login">Login here</a></p>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="container">
+                <h1>Login</h1>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-id">ID Number</label>
+                        <input type="text" id="login-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p class="link-text">Don't have an account? <a href="#" id="show-register">Register here</a></p>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+            <div class="container">
+                <div class="user-info">
+                    <h2>Welcome, <span id="user-name"></span></h2>
+                    <p>ID: <span id="user-id"></span></p>
+                    <p>Phone: <span id="user-phone"></span></p>
+                </div>
+
+                <div class="balance-card">
+                    <h3>Total Balance</h3>
+                    <p class="balance-amount" id="total-balance">0 FC</p>
+                </div>
+
+                <div class="actions">
+                    <button id="show-groups-btn" class="btn btn-primary">My Groups</button>
+                    <button id="show-create-group-btn" class="btn btn-primary">Create Group</button>
+                    <button id="show-join-group-btn" class="btn btn-primary">Join Group</button>
+                    <button id="show-transaction-btn" class="btn btn-primary">Transaction</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Groups Page -->
+        <div id="groups-page" class="page">
+            <div class="header">
+                <button id="back-to-dashboard-1" class="btn btn-secondary">Back</button>
+                <h1>My Groups</h1>
+            </div>
+            <div class="container">
+                <div id="groups-list"></div>
+            </div>
+        </div>
+
+        <!-- Create Group Page -->
+        <div id="create-group-page" class="page">
+            <div class="header">
+                <button id="back-to-dashboard-2" class="btn btn-secondary">Back</button>
+                <h1>Create Group</h1>
+            </div>
+            <div class="container">
+                <form id="create-group-form">
+                    <div class="form-group">
+                        <label for="group-name">Group Name</label>
+                        <input type="text" id="group-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="group-description">Description</label>
+                        <textarea id="group-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contribution-amount">Monthly Contribution (FC)</label>
+                        <input type="number" id="contribution-amount" required min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Group</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Join Group Page -->
+        <div id="join-group-page" class="page">
+            <div class="header">
+                <button id="back-to-dashboard-3" class="btn btn-secondary">Back</button>
+                <h1>Join Group</h1>
+            </div>
+            <div class="container">
+                <div id="available-groups-list"></div>
+            </div>
+        </div>
+
+        <!-- Transaction Page -->
+        <div id="transaction-page" class="page">
+            <div class="header">
+                <button id="back-to-dashboard-4" class="btn btn-secondary">Back</button>
+                <h1>Transaction</h1>
+            </div>
+            <div class="container">
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="transaction-type">Transaction Type</label>
+                        <select id="transaction-type" required>
+                            <option value="">Select Type</option>
+                            <option value="deposit">Deposit</option>
+                            <option value="withdrawal">Withdrawal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
+                        <select id="payment-method" required>
+                            <option value="">Select Method</option>
+                            <option value="orange-money">Orange Money</option>
+                            <option value="my-zaka">My Zaka</option>
+                            <option value="smega">Smega</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="group-select">Select Group</label>
+                        <select id="group-select" required>
+                            <option value="">Select Group</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (FC)</label>
+                        <input type="number" id="amount" required min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Process Transaction</button>
+                </form>
+
+                <div class="transaction-history">
+                    <h3>Transaction History</h3>
+                    <div id="transactions-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group Details Page -->
+        <div id="group-details-page" class="page">
+            <div class="header">
+                <button id="back-to-groups" class="btn btn-secondary">Back</button>
+                <h1 id="group-details-name"></h1>
+            </div>
+            <div class="container">
+                <div class="group-info">
+                    <p><strong>Description:</strong> <span id="group-details-description"></span></p>
+                    <p><strong>Monthly Contribution:</strong> <span id="group-details-contribution"></span> FC</p>
+                    <p><strong>Members:</strong> <span id="group-details-members"></span></p>
+                </div>
+
+                <div class="balance-card">
+                    <h3>Your Balance in this Group</h3>
+                    <p class="balance-amount" id="group-balance">0 FC</p>
+                </div>
+
+                <div class="contributions-list">
+                    <h3>Contributions</h3>
+                    <div id="group-contributions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
